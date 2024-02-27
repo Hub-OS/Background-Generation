@@ -1,7 +1,11 @@
 export default interface Theme {
   TOTAL_FRAMES: number;
+  FRAME_DURATION: number;
 
-  prepare?(): Promise<void>;
+  prepare?(
+    canvas: HTMLCanvasElement,
+    ctx: CanvasRenderingContext2D
+  ): Promise<void>;
 
   draw(
     canvas: HTMLCanvasElement,

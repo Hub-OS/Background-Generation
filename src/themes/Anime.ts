@@ -10,6 +10,7 @@ const skyImage = new Image();
 
 export default class implements Theme {
   TOTAL_FRAMES = 24;
+  FRAME_DURATION = 2;
 
   async prepare() {
     const url = new URL("../../sky.png", import.meta.url);

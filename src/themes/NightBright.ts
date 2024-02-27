@@ -13,6 +13,7 @@ const BUILDING_FILL_STYLE = "#010029";
 
 export default class implements Theme {
   TOTAL_FRAMES = 24 * 6;
+  FRAME_DURATION = 2;
 
   draw(
     canvas: HTMLCanvasElement,

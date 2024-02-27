@@ -1,7 +1,5 @@
 import Theme from "./themes/Theme";
 
-const FRAMES_PER_FRAME = 2;
-
 let frame_number = 0;
 let rendered_frames = 0;
 let real_frames = 0;
@@ -15,11 +13,11 @@ export default function loop(theme: Theme) {
   real_frames += 1;
 
   if (real_frames == 1 && theme.prepare) {
-    theme.prepare().then(() => loop(theme));
+    theme.prepare(canvas, ctx).then(() => loop(theme));
     return;
   }
 
-  if (real_frames % FRAMES_PER_FRAME != 0) {
+  if (real_frames % theme.FRAME_DURATION != 0) {
     requestAnimationFrame(() => loop(theme));
     return;
   }
@@ -44,19 +42,22 @@ function copyToOutput(theme: Theme, i: number) {
   const cols = Math.ceil(Math.sqrt(theme.TOTAL_FRAMES));
   const rows = Math.ceil(theme.TOTAL_FRAMES / cols);
 
+  const w = canvas.width;
+  const h = canvas.height;
+
   if (i == 0) {
-    outputCanvas.width = cols * canvas.width;
-    outputCanvas.height = rows * canvas.height;
+    outputCanvas.width = cols * w;
+    outputCanvas.height = rows * h;
   }
 
   const col = i % cols;
   const row = Math.floor(i / rows);
-  const x = col * 240;
-  const y = row * 160;
+  const x = col * w;
+  const y = row * h;
 
   outputCtx.drawImage(canvas, x, y);
   animationLines.push(
-    `frame duration="${FRAMES_PER_FRAME}f" x="${x}" y="${y}" w="240" h="160"`
+    `frame duration="${theme.FRAME_DURATION}f" x="${x}" y="${y}" w="${w}" h="${h}"`
   );
 }
 

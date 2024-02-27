@@ -7,6 +7,7 @@ const LINE_COLOR = "#BFEEFF";
 
 export default class implements Theme {
   TOTAL_FRAMES = 24;
+  FRAME_DURATION = 2;
 
   draw(
     canvas: HTMLCanvasElement,

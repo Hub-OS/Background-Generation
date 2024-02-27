@@ -13,6 +13,7 @@ const SKY_GRID_STYLE = "#B8F0F8";
 
 export default class implements Theme {
   TOTAL_FRAMES = 24;
+  FRAME_DURATION = 2;
 
   draw(
     canvas: HTMLCanvasElement,
