@@ -51,7 +51,7 @@ function copyToOutput(theme: Theme, i: number) {
   }
 
   const col = i % cols;
-  const row = Math.floor(i / rows);
+  const row = Math.floor(i / cols);
   const x = col * w;
   const y = row * h;
 
