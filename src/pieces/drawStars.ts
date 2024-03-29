@@ -1,4 +1,5 @@
 import { lerp } from "../lerp";
+import Theme from "../themes/Theme";
 
 // const stars = [];
 // const starCharacters = [
